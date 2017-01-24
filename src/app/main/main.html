@@ -1,0 +1,72 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="text-center m-t-lg">
+                <h1>{{main.helloText}}</h1>
+                <small>
+                  {{main.descriptionText}}
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </small>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="row m-t-lg">
+      <div class="col-lg-4">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                  <span class="label label-success pull-right">Yearly</span>
+                  <h5>Your Income </h5>
+              </div>
+              <div class="ibox-content">
+                  <h1 class="no-margins">{{ main.income | currency }}</h1> -
+                  <h2>Tax: {{ main.income * main.taxRate | currency }}</h2>
+                  change tax rate: <input type="text" name="" ng-model="main.taxRate" value="">
+                  <br>
+                  <br>
+                  <button type="button" name="button" ng-click="main.changeAmount()">Update income value</button>
+                  <div class="stat-percent font-bold text-success">90% <i class="fa fa-bolt"></i></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Monthly income</h5>
+                <div class="ibox-tools">
+                    <span class="label label-primary">today is {{ main.dataToday | date:'dd-MM-yyyy' }}</span>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="flot-chart m-t-lg" style="height: 150px;">
+                    <flot dataset="main.pieDataset" options="main.pieOptions" height="150px"></flot>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+    <div class="row">
+      <div class="col-lg-4">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h5>Your Order</h5>
+                <div class="ibox-tools">
+                  <span class="label label-info pull-right">Yearly</span>
+                </div>
+              </div>
+              <div class="ibox-content">
+                <ul class="stat-list m-t-lg">
+                      <li>
+                          <h2 class="no-margins">2,346</h2>
+                          <small>Total orders in period</small>
+                          <div class="progress progress-mini">
+                              <div class="progress-bar" style="width: {{ main.progress }}%"></div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
